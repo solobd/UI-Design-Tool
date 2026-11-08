@@ -1,0 +1,182 @@
+Project Audit: GitHub Readiness and Deployment Compatibility
+
+You are a senior software engineer and deployment auditor.
+
+Project Directory
+
+/storage/emulated/0/Termux/m3e-canvas
+
+Objective
+
+Perform a read-only technical audit of the entire project to determine whether it can be uploaded to GitHub and successfully deployed to a production hosting platform.
+
+Important: Do not modify, delete, rename, or generate any project files during this audit. Do not install packages or run commands that could modify the project. Only inspect files and run safe, non-destructive checks.
+
+Phase 1: Project Structure Analysis
+
+Inspect the project directory and identify its structure.
+
+Read the README, package manifests, configuration files, build scripts, and deployment-related files.
+
+Identify the programming languages, frameworks, libraries, runtime requirements, and application architecture.
+
+Determine whether this is a static website, frontend application, backend application, full-stack application, or another type of project.
+
+Identify the intended entry point and startup command.
+
+Avoid reading irrelevant large files, generated assets, dependency directories, or binary files unless necessary.
+
+Phase 2: Code and Dependency Audit
+
+Check for:
+
+Missing source files, modules, imports, and dependencies.
+
+Invalid package versions or incompatible runtime requirements.
+
+Syntax errors and obvious build-time errors.
+
+Missing environment variables and configuration files.
+
+Hardcoded localhost URLs, local filesystem paths, or development-only settings.
+
+API endpoints that may not work after deployment.
+
+Required external services, databases, or backend servers.
+
+Authentication, CORS, routing, and asset-loading issues.
+
+Secrets, API keys, passwords, tokens, or private credentials committed to the source code.
+
+Platform-specific dependencies that may not work on a Linux hosting environment.
+
+Use existing installed tools for safe validation. Do not install missing tools or dependencies. Clearly distinguish checks that were executed from those that could not be executed.
+
+Phase 3: GitHub Readiness
+
+Determine whether the project is ready to upload to GitHub.
+
+Inspect:
+
+.gitignore
+
+README.md
+
+package.json and lockfiles, if applicable
+
+Build and start scripts
+
+Required configuration and environment files
+
+Generated files, caches, dependencies, and sensitive data that should not be committed.
+
+Check whether the repository contains enough information for another developer or CI/CD system to install dependencies and build the project reproducibly.
+
+Do not initialize Git, create commits, or push anything to GitHub.
+
+Phase 4: Deployment Compatibility
+
+Evaluate the project against these deployment options where applicable:
+
+Vercel — static sites and supported frontend/serverless frameworks.
+
+Netlify — static sites and supported frontend frameworks.
+
+Render — supported web services and backend applications.
+
+VPS or compatible hosting — applications requiring a persistent server or custom runtime.
+
+cPanel hosting — only if the project is compatible with the available server runtime and hosting configuration.
+
+For each relevant platform, determine:
+
+Whether the project is compatible.
+
+Required build command.
+
+Required start command, if applicable.
+
+Output/build directory.
+
+Required environment variables.
+
+Backend, database, and runtime requirements.
+
+Potential routing, permissions, networking, or configuration issues.
+
+Do not assume that GitHub Pages can run a backend server or that uploading source code to GitHub automatically deploys an application.
+
+Do not claim that deployment will succeed without sufficient evidence.
+
+Phase 5: Build and Runtime Verification
+
+Check whether dependencies are already installed.
+
+If existing dependencies and tools are available, run safe, non-destructive validation commands.
+
+Test the production build only if it can be performed without installing packages or changing tracked source files.
+
+Identify missing build tools, runtime incompatibilities, and errors that would prevent deployment.
+
+If an actual deployment cannot be tested, state that clearly.
+
+Never expose secret values in the report. If credentials are discovered, report only their file paths and variable names, and recommend rotating exposed credentials where necessary.
+
+Phase 6: Final Audit Report
+
+Produce a concise but technically detailed report with the following sections:
+
+Project Overview
+
+Technology Stack
+
+GitHub Upload Readiness: PASS / FAIL / WARNING
+
+Build Status: PASS / FAIL / NOT TESTED
+
+Deployment Compatibility by Platform
+
+Critical Errors
+
+Warnings and Potential Risks
+
+Missing Files or Configuration
+
+Required Environment Variables
+
+Recommended Deployment Platform
+
+Exact Build and Deployment Commands
+
+Step-by-Step Actions Required Before Deployment
+
+Final Verdict
+
+Use evidence from actual project files and executed checks. Include relevant file paths and line numbers when possible.
+
+Classify each issue as:
+
+CRITICAL — prevents building, running, or safely deploying the application.
+
+HIGH — likely to cause production failure.
+
+MEDIUM — requires attention before production.
+
+LOW — improvement recommended.
+
+Final Verdict Requirements
+
+End the report with one of these conclusions:
+
+READY FOR GITHUB AND DEPLOYMENT
+
+READY FOR GITHUB, BUT DEPLOYMENT FIXES REQUIRED
+
+NOT READY — CRITICAL ISSUES FOUND
+
+INSUFFICIENT EVIDENCE — FURTHER TESTING REQUIRED
+
+Explain exactly why you selected the conclusion.
+
+Final restriction: This is an audit-only task. Do not fix issues, edit files, install dependencies, create deployment configurations, or upload anything. Wait for my approval before making any changes.
+
